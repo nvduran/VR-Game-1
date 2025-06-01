@@ -1,9 +1,9 @@
 using UnityEngine;
 using TMPro;
 
-public class PlatformTrigger : MonoBehaviour
+public class DoorChoiceHandler : MonoBehaviour
 {
-    public TextMeshProUGUI floatingText; // Assign this in the Inspector
+    public TextMeshProUGUI floatingText; // Drag your floating text here in the Inspector
     public string message = "Cube placed!";
 
     void OnTriggerEnter(Collider other)
@@ -11,22 +11,16 @@ public class PlatformTrigger : MonoBehaviour
         if (other.CompareTag("PlayerClass"))
         {
             string fullName = other.gameObject.name;
-            string firstWord = fullName.Split(' ')[0];
+            string firstWord = fullName.Split(' ')[0]; // Gets "mage" from "mage class selection cylinder"
             floatingText.text = firstWord;
-
-            if (GameHomeManager.Instance != null)
-            {
-                GameHomeManager.Instance.SetSelectedClass(firstWord);
-            }
         }
     }
-
 
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("PlayerClass"))
         {
-            floatingText.text = ""; // Clear when class object exits
+            floatingText.text = ""; // Clear the message when cube leaves
         }
     }
 }
