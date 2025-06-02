@@ -1,32 +1,48 @@
 using UnityEngine;
 using TMPro;
 
+public enum PlatformType
+{
+    Class,
+    Spell
+}
+
 public class PlatformTrigger : MonoBehaviour
 {
-    public TextMeshProUGUI floatingText; // Assign this in the Inspector
-    public string message = "Cube placed!";
+    [SerializeField] private TextMeshProUGUI floatingText;
+    [SerializeField] private string message = "";
+    [SerializeField] private string targetTag1 = "PlayerClass";
+    [SerializeField] private string targetTag2 = "ClassSpell";
+    [SerializeField] private PlatformType platformType;
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerClass"))
-        {
-            string fullName = other.gameObject.name;
-            string firstWord = fullName.Split(' ')[0];
-            floatingText.text = firstWord;
+        if (!(other.CompareTag(targetTag1) || other.CompareTag(targetTag2))) return;
 
-            if (GameHomeManager.Instance != null)
+        string firstWord = other.gameObject.name.Split(' ')[0];
+        floatingText.text = string.IsNullOrEmpty(message) ? firstWord : message;
+
+        if (GameHomeManager.Instance != null)
+        {
+            switch (platformType)
             {
-                GameHomeManager.Instance.SetSelectedClass(firstWord);
+                case PlatformType.Class:
+                    GameHomeManager.Instance.SetSelectedClass(firstWord);
+                    floatingText.text = firstWord;
+                    break;
+                case PlatformType.Spell:
+                    GameHomeManager.Instance.SetSelectedSpell1(firstWord);
+                    floatingText.text = firstWord;
+                    break;
             }
         }
     }
 
-
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("PlayerClass"))
+        if (!other.CompareTag(targetTag1) || !other.CompareTag(targetTag2))
         {
-            floatingText.text = ""; // Clear when class object exits
+            floatingText.text = "";
         }
     }
 }
