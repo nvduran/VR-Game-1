@@ -9,6 +9,7 @@ public class GameHomeManager : MonoBehaviour
     private bool practiceModeSelected = false;
 
     public string selectedClassName; // <-- Add this!
+    public string selectedSpell1;
 
     private void Awake()
     {
@@ -34,6 +35,11 @@ public class GameHomeManager : MonoBehaviour
     {
         practiceModeSelected = true;
         CheckStartPracticeRange();
+    }
+
+    public void SetSelectedSpell1(string spellName)
+    {
+        selectedSpell1 = spellName;
     }
 
     private void CheckStartPracticeRange()

@@ -3,22 +3,28 @@ using TMPro;
 
 public class PracticeRangeController : MonoBehaviour
 {
-    public TextMeshProUGUI floatingText; // Assign this in the Inspector
-    public string message = "Cube placed!";
+    public TextMeshProUGUI classNameText; // Assign this in the Inspector
+    public TextMeshProUGUI spellNameText; // Assign this in the Inspector
+
+    public string defaultMessage = "Cube placed!";
 
     void Start()
     {
         string className = GameHomeManager.Instance.selectedClassName;
+        string classSpellName = GameHomeManager.Instance.selectedSpell1;
+
         Debug.Log("Loaded class: " + className);
+        Debug.Log("Loaded spell: " + classSpellName);
 
-        if(className != null)
+        if (!string.IsNullOrEmpty(className))
         {
-            floatingText.text = className;
-        } 
+            classNameText.text = className;
+        }
 
-        
-
-        // You can now use className to configure the scene
+        if (!string.IsNullOrEmpty(classSpellName))
+        {
+            spellNameText.text = classSpellName;
+        }
 
         // Optionally destroy GameHomeManager
         Destroy(GameHomeManager.Instance.gameObject);
