@@ -76,6 +76,7 @@ public class MageFireballCaster : MonoBehaviour
 
     private void OnTriggerPerformed(InputAction.CallbackContext context)
     {
+        Debug.Log("Trigger pressed!");
         if (isCasting)
         {
             FireFireball();
@@ -87,14 +88,33 @@ public class MageFireballCaster : MonoBehaviour
 
     private void FireFireball()
     {
-        if (fireballPrefab != null && fireballSpawnPoint != null)
+        Debug.Log("FireFireball() called");
+
+        if (fireballPrefab == null)
         {
-            var fireball = Instantiate(fireballPrefab, fireballSpawnPoint.position, fireballSpawnPoint.rotation);
-            if (fireball.TryGetComponent<Rigidbody>(out var rb))
-            {
-                rb.linearVelocity = fireballSpawnPoint.forward * 10f;
-            }
-            Debug.Log("Fireball launched!");
+            Debug.LogWarning("fireballPrefab is NULL!");
+            return;
         }
+
+        if (fireballSpawnPoint == null)
+        {
+            Debug.LogWarning("fireballSpawnPoint is NULL!");
+            return;
+        }
+
+        GameObject fireball = Instantiate(fireballPrefab, fireballSpawnPoint.position, fireballSpawnPoint.rotation);
+        Debug.Log("Fireball instantiated at: " + fireballSpawnPoint.position);
+
+        if (fireball.TryGetComponent<Rigidbody>(out var rb))
+        {
+            rb.linearVelocity = fireballSpawnPoint.forward * 10f;
+            Debug.Log("Fireball velocity set");
+        }
+        else
+        {
+            Debug.LogWarning("Fireball has no Rigidbody!");
+        }
+
+        Debug.Log("Fireball launched!");
     }
 }
