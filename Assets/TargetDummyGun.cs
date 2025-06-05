@@ -26,6 +26,7 @@ public class TargetDummyGun : MonoBehaviour
         if (fireballPrefab == null || fireballSpawnPoint == null)
         {
             Debug.LogWarning("Fireball prefab or spawn point is not set!");
+            Debug.LogWarning(fireballPrefab);
             return;
         }
 

@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        Debug.Log("Player took damage");
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         UpdateHealthBar();

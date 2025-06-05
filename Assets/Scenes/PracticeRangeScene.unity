@@ -477,8 +477,7 @@ GameObject:
   - component: {fileID: 557202869}
   - component: {fileID: 557202872}
   - component: {fileID: 557202871}
-  - component: {fileID: 557202873}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Player Body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -494,8 +493,8 @@ Transform:
   m_GameObject: {fileID: 557202866}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.52, z: -0.191}
-  m_LocalScale: {x: 0.3, y: 1, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0.531, z: 0.031}
+  m_LocalScale: {x: 0.2, y: 1, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 970112395}
@@ -552,7 +551,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557202866}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &557202871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,35 +585,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
+  m_Size: {x: 2, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &557202873
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557202866}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &590284702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,6 +2204,10 @@ PrefabInstance:
       propertyPath: m_TurnSpeed
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6981642495833523204, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.347
+      objectReference: {fileID: 0}
     - target: {fileID: 7347985736721345035, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3312,7 +3288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1696459059355367139, guid: 604ebeb00239caf408119a7fd32baf2e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7336926
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 1696459059355367139, guid: 604ebeb00239caf408119a7fd32baf2e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3377,7 +3353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1971672848716795435, guid: 7e77b2687a3646e4fbadba1067d81e77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2811009
+      value: 0.27
       objectReference: {fileID: 0}
     - target: {fileID: 1971672848716795435, guid: 7e77b2687a3646e4fbadba1067d81e77, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3414,6 +3390,10 @@ PrefabInstance:
     - target: {fileID: 6425854215892052452, guid: 7e77b2687a3646e4fbadba1067d81e77, type: 3}
       propertyPath: m_Name
       value: TargetDummyGunProj
+      objectReference: {fileID: 0}
+    - target: {fileID: 6425854215892052452, guid: 7e77b2687a3646e4fbadba1067d81e77, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
