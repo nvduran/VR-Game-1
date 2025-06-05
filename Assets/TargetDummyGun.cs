@@ -6,7 +6,7 @@ public class TargetDummyGun : MonoBehaviour
     public GameObject fireballPrefab;
     public Transform fireballSpawnPoint;
     public float shootInterval = 2f;
-    public float projectileSpeed = 10f;
+    public float projectileSpeed = 1f;
 
     private float shootTimer = 0f;
 
@@ -26,7 +26,6 @@ public class TargetDummyGun : MonoBehaviour
         if (fireballPrefab == null || fireballSpawnPoint == null)
         {
             Debug.LogWarning("Fireball prefab or spawn point is not set!");
-            Debug.LogWarning(fireballPrefab, fireballSpawnPoint);
             return;
         }
 
