@@ -4,7 +4,13 @@ public class Billboard : MonoBehaviour
 {
     void Update()
     {
-        transform.LookAt(Camera.main.transform);
-        transform.Rotate(0, 180, 0); // Flip it if facing backwards
+        Vector3 cameraPosition = Camera.main.transform.position;
+        Vector3 direction = cameraPosition - transform.position;
+        direction.y = 0; // Keep the bar upright (ignore vertical tilt)
+
+        if (direction.sqrMagnitude > 0.001f)
+        {
+            transform.rotation = Quaternion.LookRotation(-direction); // Flip to face the camera
+        }
     }
 }

@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+
 
 public class TargetDummyHealth : MonoBehaviour
 {
@@ -7,10 +9,17 @@ public class TargetDummyHealth : MonoBehaviour
     public float maxHealth = 100f;
     private float currentHealth;
 
+    private Vector3 spawnPosition;
+    private Quaternion spawnRotation;
+
+    public TargetDummyManager manager; // assign this in the inspector
+
     void Start()
     {
         currentHealth = maxHealth;
         UpdateHealthBar();
+        spawnPosition = transform.position;
+        spawnRotation = transform.rotation;
     }
 
     public void TakeDamage(float amount)
@@ -22,8 +31,18 @@ public class TargetDummyHealth : MonoBehaviour
         if (currentHealth <= 0f)
         {
             Debug.Log("Target Dummy defeated!");
-            // Optional: Destroy(gameObject);
+            manager.RespawnDummyAfterDelay(this, 3f);
+            gameObject.SetActive(false);
         }
+    }
+
+    public void ResetDummy()
+    {
+        currentHealth = maxHealth;
+        UpdateHealthBar();
+        transform.position = spawnPosition;
+        transform.rotation = spawnRotation;
+        gameObject.SetActive(true);
     }
 
     private void UpdateHealthBar()
